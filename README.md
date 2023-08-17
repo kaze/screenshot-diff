@@ -2,7 +2,7 @@
 
 The tool uses [Playwright](https://playwright.dev/) to take screenshots of a website and [pixelmatch](https://github.com/mapbox/pixelmatch) to compare them to a reference image.
 
-It is intended to be used in a CI/CD pipeline to detect visual regressions in a specific project, but I think could be a starting point in case we need anything similiar in the future.
+It is intended to be used in a CI/CD pipeline to detect visual regressions in a specific project, but I think it could be a starting point in case we need anything similiar in the future.
 
 ## Setup
 
