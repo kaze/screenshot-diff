@@ -9,7 +9,7 @@ const main = async () => {
   await get_sitemap();
   const urls = await get_urls_from_sitemap();
 
-  for (const remote of [true]) {
+  for (const remote of [true, false]) {
     await take_screenshots(urls, remote);
   }
 
