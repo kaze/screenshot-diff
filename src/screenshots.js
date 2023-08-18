@@ -20,7 +20,7 @@ const url_to_filename = (url, remote) => {
     name = "root";
   }
 
-  return path.join(directory, `${name}--${Date.now()}.png`);
+  return path.join(directory, `${name}.png`);
 };
 
 const take_screenshot = async (page, url, remote) => {
@@ -59,17 +59,13 @@ export const take_screenshots = async (urls, remote) => {
   });
 };
 
-const normalize_name = (name) => {
-  return name.split("--")[0];
-};
-
 export const compare_screenshots = async () => {
   const local_screenshots = fs.readdirSync(config.LOCAL_SCREENSHOT_DIR);
   const remote_screenshots = fs.readdirSync(config.REMOTE_SCREENSHOT_DIR);
 
   for (const local of local_screenshots) {
     const remote = remote_screenshots.find((screenshot) => {
-      return normalize_name(screenshot) === normalize_name(local);
+      return screenshot === local;
     });
 
     const result = compare_images(
