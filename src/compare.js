@@ -16,7 +16,8 @@ const compare_images = (remote, local) => {
       threshold: config.IMAGE_DIFFERENCE_THRESHOLD,
     });
   } catch (error) {
-    console.error(error);
+    console.log(`Error comparing ${remote} and ${local}: ${error}}`);
+    // console.error(error)
   }
 };
 

@@ -12,7 +12,7 @@ const url_to_filename = (url, remote) => {
     ? config.REMOTE_SCREENSHOT_DIR
     : config.LOCAL_SCREENSHOT_DIR;
   url = url.replace(to_replace, "");
-  let name = url.trimRight("/").replace(/\//g, "-");
+  let name = url.replaceAll("/", "-").replace(/^-/, "").replace(/-$/, "");
 
   // screenshot of the root page is a special case, because we emptied
   // its name in the previous step
@@ -69,9 +69,12 @@ export const compare_screenshots = async () => {
 
   for (const local of local_screenshots) {
     const remote = remote_screenshots.find((screenshot) => {
-      return normalize_name(screenshot.name) === normalize_name(local.name);
+      return normalize_name(screenshot) === normalize_name(local);
     });
 
-    const result = compare_images(remote, local);
+    const result = compare_images(
+      path.join(config.REMOTE_SCREENSHOT_DIR, remote),
+      path.join(config.LOCAL_SCREENSHOT_DIR, local),
+    );
   }
 };
