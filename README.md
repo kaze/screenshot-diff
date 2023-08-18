@@ -8,9 +8,13 @@ It is intended to be used in a CI/CD pipeline to detect visual regressions in a 
 
 You need to provide some configuration values through [dotenv](https://github.com/motdotla/dotenv), please see the [example .env file](./.env.example). Copy as `.env`, then modify its content.
 
+```bash
+npm install
+npx playwright install
+```
+
 ## Usage
 
 ```bash
-npm install
 npm start
 ```
